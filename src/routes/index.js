@@ -1,3 +1,4 @@
 const testRoute = require('./testRoute');
+const storeFormsWithQuestions = require('./storeFormsWithQuestions');
 
-module.exports = [].concat(testRoute);
+module.exports = [].concat(testRoute, storeFormsWithQuestions);
