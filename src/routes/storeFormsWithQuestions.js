@@ -14,9 +14,10 @@ const handler = (request, response) => {
       questionsWithFormId.formId = data.dataValues.id;
       questionsWithFormIdArray.push(questionsWithFormId);
     });
-    return Models.questions.bulkCreate(questionsWithFormIdArray).then(() => Models.questions.findAll().then((questionsArray) => {
-      response(questionsArray);
-    }));
+    return Models.questions.bulkCreate(questionsWithFormIdArray)
+      .then(() => Models.questions.findAll().then((questionsArray) => {
+        response(questionsArray);
+      }));
   });
 };
 
