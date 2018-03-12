@@ -2,7 +2,7 @@ const Models = require('../../models');
 
 
 const handler = (request, response) => {
-  const modelPromise = Models.forms.findAll().then((formsArray) => {
+  const modelPromise = Models.forms.findAllForms().then((formsArray) => {
     response(formsArray);
   });
   return modelPromise;

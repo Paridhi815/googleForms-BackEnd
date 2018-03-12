@@ -11,4 +11,15 @@ describe('Testcase for test route', () => {
       done();
     });
   });
+
+  it('Testing that response is an array', (done) => {
+    const options = {
+      method: 'GET',
+      url: '/forms',
+    };
+    Server.inject(options, (response) => {
+      expect(response.result).toBeInstanceOf(Array);
+      done();
+    });
+  });
 });

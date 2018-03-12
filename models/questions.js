@@ -16,5 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     return modelPromise;
   };
 
+  questions.deleteAllQuestions = () => questions.destroy({ cascade: true, truncate: true });
+
   return questions;
 };

@@ -12,5 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   forms.createNewForm = formTitle => forms.create({
     title: formTitle,
   });
+
+  forms.findAllForms = () => forms.findAll();
   return forms;
 };

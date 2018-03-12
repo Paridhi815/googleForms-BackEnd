@@ -3,7 +3,7 @@ const Models = require('../../models');
 
 describe('Testcase for test route', () => {
   beforeAll((done) => {
-    Models.questions.destroy({ cascade: true, truncate: true }).then(() => {
+    Models.questions.deleteAllQuestions().then(() => {
       console.log('BEFORE');
       done();
     });
