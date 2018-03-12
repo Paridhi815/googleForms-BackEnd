@@ -14,5 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   forms.findAllForms = () => forms.findAll();
+
+  forms.deleteAllForms = () => forms.destroy({ truncate: true });
+
   return forms;
 };

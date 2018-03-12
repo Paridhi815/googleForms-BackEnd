@@ -83,10 +83,10 @@ describe('Testcase for test route', () => {
     });
   });
 
-  afterAll((done) => {
-    Models.questions.destroy({ cascade: true, truncate: true }).then(() => {
-      console.log('BEFORE');
-      done();
-    });
-  });
+  // afterAll((done) => {
+  //   Models.questions.destroy({ cascade: true, truncate: true }).then(() => {
+  //     console.log('BEFORE');
+  //     done();
+  //   });
+  // });
 });

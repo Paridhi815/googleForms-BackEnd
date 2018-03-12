@@ -16,7 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     return modelPromise;
   };
 
-  questions.deleteAllQuestions = () => questions.destroy({ cascade: true, truncate: true });
+  questions.deleteAllQuestions = () => questions.destroy({ truncate: true });
+
+  questions.findQuestionsWithFormId = formId => questions.findAll({
+    where: {
+      formId,
+    },
+  });
 
   return questions;
 };
