@@ -8,5 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     forms.hasMany(models.questions);
   };
+
+  forms.createNewForm = formTitle => forms.create({
+    title: formTitle,
+  });
   return forms;
 };

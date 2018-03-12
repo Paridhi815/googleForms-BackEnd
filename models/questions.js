@@ -7,9 +7,14 @@ module.exports = (sequelize, DataTypes) => {
     isRequired: DataTypes.BOOLEAN,
     type: DataTypes.STRING,
   }, {});
-  questions.associate = function (models) {
+  questions.associate = (models) => {
     // associations can be defined here
     questions.hasMany(models.answers);
   };
+  questions.insertAllQuestions = (questionsWithFormIdArray) => {
+    const modelPromise = questions.bulkCreate(questionsWithFormIdArray);
+    return modelPromise;
+  };
+
   return questions;
 };

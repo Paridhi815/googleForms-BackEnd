@@ -1,12 +1,11 @@
 const Models = require('../../models');
+const Joi = require('joi');
 
 const handler = (request, response) => {
   const { formTitle } = request.payload;
-  let { questions } = request.payload;
-  questions = JSON.parse(questions);
-  Models.forms.create({
-    title: formTitle,
-  }).then((data) => {
+  const { questions } = request.payload;
+  // questions = JSON.parse(questions);
+  Models.forms.createNewForm(formTitle).then((data) => {
     let questionsWithFormId = {};
     const questionsWithFormIdArray = [];
     questions.forEach((questionObject) => {
@@ -14,10 +13,8 @@ const handler = (request, response) => {
       questionsWithFormId.formId = data.dataValues.id;
       questionsWithFormIdArray.push(questionsWithFormId);
     });
-    return Models.questions.bulkCreate(questionsWithFormIdArray)
-      .then(() => Models.questions.findAll().then((questionsArray) => {
-        response(questionsArray);
-      }));
+    return Models.questions.insertAllQuestions(questionsWithFormIdArray)
+      .then(() => response().code(201));
   });
 };
 
@@ -25,6 +22,19 @@ const storeFormsWithQuestions = {
   method: 'PUT',
   path: '/formsWithQuestions',
   handler,
+  config: {
+    validate: {
+      payload: {
+        formTitle: Joi.string().min(3).max(30)
+          .required(),
+        questions: Joi.array().items(Joi.object({
+          questionText: Joi.string().required(),
+          type: Joi.string().required(),
+          isRequired: Joi.boolean().required(),
+        })),
+      },
+    },
+  },
 };
 
 module.exports = storeFormsWithQuestions;
