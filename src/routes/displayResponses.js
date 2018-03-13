@@ -10,6 +10,8 @@ const handler = (request, response) => {
       model: Models.questions,
       include: [{
         model: Models.answers,
+        order: [['createdAt', 'DESC']],
+        limit: 7,
       }],
     }],
   }).then(formsWithQuestionsAndAnswers => formsWithQuestionsAndAnswers);

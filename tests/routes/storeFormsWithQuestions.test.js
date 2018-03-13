@@ -10,8 +10,8 @@ describe('Testcase for test route', () => {
   });
   it('Testing for status code 200', (done) => {
     const options = {
-      method: 'PUT',
-      url: '/formsWithQuestions',
+      method: 'POST',
+      url: '/forms',
       payload: {
         formTitle: 'hal chal',
         questions: [{ questionText: 'wassup', type: 'short answer', isRequired: true }, { questionText: 'what?', type: 'date', isRequired: false }],
@@ -25,8 +25,8 @@ describe('Testcase for test route', () => {
 
   it('Responds with 400 statusCode for empty form title', (done) => {
     const options = {
-      method: 'PUT',
-      url: '/formsWithQuestions',
+      method: 'POST',
+      url: '/forms',
       payload: {
         formTitle: '',
         questions: [{ questionText: 'wassup', type: 'short answer', isRequired: true }, { questionText: 'what?', type: 'date', isRequired: false }],
@@ -40,8 +40,8 @@ describe('Testcase for test route', () => {
 
   it('Responds with 400 statusCode for isRequired not Boolean', (done) => {
     const options = {
-      method: 'PUT',
-      url: '/formsWithQuestions',
+      method: 'POST',
+      url: '/forms',
       payload: {
         formTitle: '',
         questions: [{ questionText: 'wassup', type: 'short answer', isRequired: '' }, { questionText: 'what?', type: 'date', isRequired: false }],
@@ -55,8 +55,8 @@ describe('Testcase for test route', () => {
 
   it('Responds with 400 statusCode for questionText empty', (done) => {
     const options = {
-      method: 'PUT',
-      url: '/formsWithQuestions',
+      method: 'POST',
+      url: '/forms',
       payload: {
         formTitle: '',
         questions: [{ questionText: '', type: 'short answer', isRequired: '' }, { questionText: 'what?', type: 'date', isRequired: false }],
@@ -70,8 +70,8 @@ describe('Testcase for test route', () => {
 
   it('Responds with 400 statusCode for questionType isnt a string', (done) => {
     const options = {
-      method: 'PUT',
-      url: '/formsWithQuestions',
+      method: 'POST',
+      url: '/forms',
       payload: {
         formTitle: '',
         questions: [{ questionText: '', type: 123, isRequired: '' }, { questionText: 'what?', type: 'date', isRequired: false }],

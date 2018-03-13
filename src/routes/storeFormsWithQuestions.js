@@ -2,6 +2,8 @@ const Models = require('../../models');
 const Joi = require('joi');
 
 const handler = (request, response) => {
+  console.log(request);
+
   const { formTitle } = request.payload;
   const { questions } = request.payload;
   // questions = JSON.parse(questions);
@@ -19,22 +21,22 @@ const handler = (request, response) => {
 };
 
 const storeFormsWithQuestions = {
-  method: 'PUT',
-  path: '/formsWithQuestions',
+  method: 'POST',
+  path: '/forms',
   handler,
-  config: {
-    validate: {
-      payload: {
-        formTitle: Joi.string().min(3).max(30)
-          .required(),
-        questions: Joi.array().items(Joi.object({
-          questionText: Joi.string().required(),
-          type: Joi.string().required(),
-          isRequired: Joi.boolean().required(),
-        })),
-      },
-    },
-  },
+  // config: {
+  //   validate: {
+  //     payload: {
+  //       formTitle: Joi.string().min(3).max(30)
+  //         .required(),
+  //       questions: Joi.array().items(Joi.object({
+  //         questionText: Joi.string().required(),
+  //         type: Joi.string().required(),
+  //         isRequired: Joi.boolean().required(),
+  //       })),
+  //     },
+  //   },
+  // },
 };
 
 module.exports = storeFormsWithQuestions;
