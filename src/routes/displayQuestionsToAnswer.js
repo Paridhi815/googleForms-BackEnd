@@ -11,16 +11,16 @@ const handler = (request, response) => {
 
 const displayFormWithQuestions = {
   method: 'GET',
-  path: '/questionsToAnswer/{formId}',
+  path: '/forms/{formId}',
   handler,
-  config: {
-    validate: {
-      params: {
-        formId: Joi.number().integer()
-          .required(),
-      },
-    },
-  },
+  // config: {
+  //   validate: {
+  //     params: {
+  //       formId: Joi.number().integer()
+  //         .required(),
+  //     },
+  //   },
+  // },
 };
 
 module.exports = displayFormWithQuestions;

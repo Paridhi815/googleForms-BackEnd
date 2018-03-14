@@ -17,7 +17,7 @@ module.exports = {
     isRequired: {
       type: Sequelize.BOOLEAN,
     },
-    type: {
+    questionType: {
       type: Sequelize.STRING,
     },
     createdAt: {

@@ -25,7 +25,7 @@ describe('Testcase for test route', () => {
   it('Testing for status code 200', (done) => {
     const options = {
       method: 'GET',
-      url: '/questionsToAnswer/100',
+      url: '/forms/100',
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(200);
@@ -36,7 +36,7 @@ describe('Testcase for test route', () => {
   it('Joi Validation Should return 400 for non-numeric formId', (done) => {
     const options = {
       method: 'GET',
-      url: '/questionsToAnswer/paridhi',
+      url: '/forms/paridhi',
     };
     Server.inject(options, (response) => {
       expect(response.statusCode).toBe(400);
@@ -47,7 +47,7 @@ describe('Testcase for test route', () => {
   it('Testing that response is an array', (done) => {
     const options = {
       method: 'GET',
-      url: '/questionsToAnswer/100',
+      url: '/forms/100',
     };
     Server.inject(options, (response) => {
       expect(response.result).toBeInstanceOf(Array);

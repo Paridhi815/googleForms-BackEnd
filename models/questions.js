@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     questionText: DataTypes.STRING,
     formId: DataTypes.INTEGER,
     isRequired: DataTypes.BOOLEAN,
-    type: DataTypes.STRING,
+    questionType: DataTypes.STRING,
   }, {});
   questions.associate = (models) => {
     // associations can be defined here

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --notify --forceExit",
-    "start": "nodemon src/server.js"
+    "test": "sequelize db:migrate:undo:all && sequelize db:migrate && jest --coverage --notify --forceExit --runInBand",
+    "start": "sequelize db:migrate:undo:all &&  sequelize db:migrate && sequelize db:seed:all && nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
